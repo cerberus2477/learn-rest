@@ -11,7 +11,10 @@
 
 <body>
     <nav>
-        <p class="logo">Learn api</p>
+        <ul>
+            <li><a class="logo" href="#">Learn api</a></li>
+            <li><a href="#f1">Macskák</a></li>
+        </ul>
     </nav>
     <main>
         <h1>Learn api</h1>
@@ -104,11 +107,19 @@
                     <input class="btn" type="button" value="Mehet" onclick="fetchRandomCatImg();">
                 </fieldset>
 
+                <h4>A kép</h4>
                 <img id="catImg" src="" alt="Random cica a https//cataas.com/-ról">
+                <h5>A json kód a kép mögött</h5>
+                <p id="catJSON"></p>
             </div>
 
         </details>
 
+        <h2>Hogyan működik?</h2>
+        <p>Ahhoz, hogy a fenti feladatban a vlasztott kép megjelenjen az oldalon, az alábbi kód fut a háttérben. </p>
+        <code>
+            <!-- cat-fetch.js -->
+        </code>
 
     </main>
 
