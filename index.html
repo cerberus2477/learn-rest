@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API és REST API Gyakorlati Tesztek</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="cat-fetch.js"></script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a class="logo" href="#">Learn api</a></li>
+            <li><a href="#f1">Macskák</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Learn api</h1>
+
+        <h2>Mi az az api?</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, doloribus? Consequatur iste velit quae omnis
+            est rerum dolore, tempora, asperiores nihil expedita veniam temporibus explicabo quod molestias quos
+            consequuntur. Magni minima non eius ipsa eos officia vero necessitatibus eligendi voluptas exercitationem
+            saepe ipsam, debitis, unde quis ut, placeat error. Omnis commodi, error nostrum itaque, dolores ipsam
+            dolorum amet illum quo temporibus dolor architecto! Voluptatem voluptatibus quaerat temporibus ab beatae
+            obcaecati nemo pariatur voluptates architecto iste mollitia maiores culpa maxime dignissimos accusamus
+            inventore similique optio, officiis totam reiciendis, rem sapiente deleniti! Blanditiis, animi? Repudiandae
+            magnam a pariatur error voluptas laudantium, eligendi maiores perferendis doloribus nisi, expedita aperiam
+            tempore eius culpa animi recusandae saepe! Dolores nemo delectus nam velit iste temporibus porro.</p>
+
+        <details id="f1" open>
+            <summary>1. feladat Macskák</summary>
+            <p>Ez a táblázat egy pár lehetséges lekérést mutat be.</p>
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th>Url</th>
+                        <th>Leírás</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>/cat</strong></td>
+                        <td>Will return a random cat</td>
+                    </tr>
+                    <tr>
+                        <td><strong>/cat/tag</strong></td>
+                        <td>Will return a random cat with a <code>tag</code></td>
+
+                    </tr>
+                    <tr>
+                        <td><strong>/cat/gif</strong></td>
+                        <td>Will return a random gif cat \o/</td>
+
+                    </tr>
+                    <tr>
+                        <td><strong>/cat/says/text</strong></td>
+                        <td>Will return a random cat saying <code>text</code></td>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>/cat/tag/says/text</strong></td>
+                        <td>Will return a random cat with a <code>tag</code> and saying
+                            <code>text</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>/cat/says/text?fontSize=size&amp;fontColor=color</strong></td>
+                        <td>Will return a random cat saying <code>text</code> with
+                            text's
+                            <code>fontSize</code> and text's <code>fontColor</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>/cat?filter=filter</strong></td>
+                        <td>Will return a random cat with image filtered by
+                            <code>filter</code> (blur, mono, negate or custom)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>/cat?filter=custom&amp;brightness=brightness&amp;lightness=lightness&amp;saturation=saturation&amp;hue=hue</strong>
+                        </td>
+                        <td>Will return a random cat with image filtered by
+                            <code>brightness</code>, <code>lightness</code>, <code>saturation</code> and
+                            <code>hue</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>/cat?filter=custom&amp;r=red&amp;g=green&amp;b=blue</strong></td>
+                        <td>Will return a random cat with image filtered by
+                            <code>red</code>, <code>green</code> and <code>blue</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <div class="teszt-container">
+                <p>Ebben a feladatban kipróbálhatsz egy api-t. A fenti szabályok szerint add meg a kép forrását, majd
+                    nyomd meg a gombot.</p>
+                <fieldset>
+                    <label for="catImgSource">Kép forrása</label>
+                    <input type="text" name="" id="catImgSource" value="https//cataas.com/cat">
+                    <input class="btn" type="button" value="Mehet" onclick="fetchRandomCatImg();">
+                </fieldset>
+
+                <h4>A kép</h4>
+                <img id="catImg" src="" alt="Random cica a https//cataas.com/-ról">
+                <h5>A json kód a kép mögött</h5>
+                <p id="catJSON"></p>
+            </div>
+
+        </details>
+
+        <h2>Hogyan működik?</h2>
+        <p>Ahhoz, hogy a fenti feladatban a vlasztott kép megjelenjen az oldalon, az alábbi kód fut a háttérben. </p>
+        <code>
+            <!-- cat-fetch.js -->
+        </code>
+
+    </main>
+
+    <footer>
+        <p>Hasznos linkek</p>
+        <ul>
+            <li><a href="https//cataas.com/">https//cataas.com/</a></li>
+            <li><a href="https//github.com/public-apis/public-apis?tab=readme-ov-file">https//github.com/public-apis</a>
+            </li>
+            <li><a href="https//http.cat/">https//http.cat/</a></li>
+        </ul>
+
+    </footer>
+</body>
+
+</html>

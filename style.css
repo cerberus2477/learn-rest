@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 1px solid black;
+}
+
+.teszt-container {
+    margin-inline: auto;
+}
