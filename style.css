@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    text-decoration: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -16,7 +17,6 @@ nav{
 }
 
 .nav-item{
-    text-decoration: none;
     color: wheat;
     padding: 0.5em;
     font-size: 2em;
