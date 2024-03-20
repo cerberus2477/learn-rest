@@ -2,6 +2,7 @@
     box-sizing: border-box;
     text-decoration: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 html,
@@ -12,8 +13,8 @@ body {
 
 p{
     text-align: justify;
-    font-size: 1.5em;
-    letter-spacing: 120%;
+    font-size: 1.25rem;
+    line-height: 150%;
 }
 
 nav{
@@ -43,4 +44,9 @@ th {
 
 .teszt-container {
     margin-inline: auto;
+}
+
+dfn{
+    cursor: pointer;
+    text-decoration: underline;
 }
