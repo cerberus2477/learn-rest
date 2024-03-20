@@ -10,6 +10,12 @@ body {
     margin: 0;
 }
 
+p{
+    text-align: justify;
+    font-size: 1.5em;
+    letter-spacing: 120%;
+}
+
 nav{
     display: flex;
     background-color: dimgray;
@@ -22,7 +28,9 @@ nav{
     font-size: 2em;
 }
 
-
+main{
+    margin: 4em;
+}
 
 table {
     border-collapse: collapse;
