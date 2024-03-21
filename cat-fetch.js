@@ -11,8 +11,8 @@ async function fetchRandomCatImg() {
             let imgUrl = response.url;
             response = await fetch(imgUrl + "?json=true");
             if (response.ok) {
-                let jsonData = await response.json(); // Parse JSON response
-                catJSONElement.innerText = JSON.stringify(jsonData); // Display parsed JSON
+                let jsonData = await response.json();
+                catJSONElement.innerText = JSON.stringify(jsonData);
             } else {
                 console.error('Hiba:', response.statusText);
             }

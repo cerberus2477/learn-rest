@@ -126,8 +126,8 @@
             reszt dolgok
         </section>
 
-        <details id="f1" open>
-            <summary>Feladat Macskák</summary>
+        <div id="f1" class="feladat">
+            <h2>Feladat Macskák</h2>
             <p>Ebben a feladatban kipróbálhatsz egy API-t.</p>
             <p>Ez a táblázat néhány lehetséges lekérést mutat be a <a href="https://cataas.com/">https://cataas.com/</a>
                 oldalról.</p>
@@ -189,27 +189,51 @@
 
             </div>
 
-        </details>
+        </div>
         </section>
         <h2>Hogyan működik?</h2>
         <h4>A json kód a kép mögött (így tárolja a szerver a kép adatait)</h4>
         <p id="catJSON"></p>
-        <p>Ebből az adathalmazból be tudjuk ágyazni a weboldalba a számunkra érdekes adatoka.</p>
+        <p>Ebből az adathalmazból be tudjuk ágyazni a weboldalba a számunkra érdekes adatokat.</p>
 
 
         <h2>Hogyan használjuk az API-kat</h2>
         <p>Ahhoz, hogy a fenti feladatban a választott kép megjelenjen az oldalon, az alábbi kód fut a
             háttérben. </p>
+
+        <p>Figyeljük meg a <strong>fetch()</strong> függvény használatát!</p>
         <code>
-            <!-- cat-fetch.js -->
-            MAGYARÁZAT KÉNE
+            <pre>
+            async function fetchRandomCatImg() {
+                let catImgElement = document.getElementById('catImg');
+                let catJSONElement = document.getElementById('catJSON');
+            
+                let userUrl = catImgSource.value;
+            
+                try {
+                    let response = await fetch(userUrl);
+                    if (response.ok) {
+                        catImgElement.src = response.url;
+                        let imgUrl = response.url;
+                        response = await fetch(imgUrl + "?json=true");
+                        if (response.ok) {
+                            let jsonData = await response.json();
+                            catJSONElement.innerText = JSON.stringify(jsonData);
+                        } else {
+                            console.error('Hiba:', response.statusText);
+                        }
+                    } else {
+                        console.error('Hiba:', response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Hiba:', error);
+                }
+            }
+            
+            fetchRandomCatImg(); //meghívjuk a függvényt először
+        </pre>
         </code>
 
-
-        <details>
-            <summary>Projectfeladat</summary>
-            <p></p>
-        </details>
     </main>
 
     <footer>
