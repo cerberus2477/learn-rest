@@ -73,16 +73,34 @@ footer {
     padding: 10px;
 }
 
-.prompt {
-    border-left: 2px solid rgb(60, 120, 230);
-    padding: .7rem;
-    margin-left: .5rem;
-}
 
-dt {
-    background-color: rgb(255, 255, 159);
-    padding: .3rem;
-}
+
+.code-snippet {
+    position: relative;
+    background: #d3d6db;
+    padding: 10px;
+    font-size: 15px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    border: 1px solid #e6e7e9;
+    max-width: 500px;
+   }
+   
+   #copyButton {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    cursor: pointer;
+    color: #fff;
+    background: gray;
+    border-radius: 0.5em;
+    padding: 2px 7px;
+   }
+   
+   #copyButton:hover {
+    color: #000;
+   }
+   
 
 
 @media only screen and (max-width: 800px) {
