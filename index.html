@@ -27,11 +27,12 @@
                 szerezzenek az apik világában.</p>
             <h3>Oldal tartalma</h3>
             <p>Ezen az oldalon 3 részre osztjuk a tanulást. Az elején egy fogalomtárral találkozhatnak ahol az
-                alapfogalmakkal találkozhatnak, majd gyakorlati példák következnek ahol rövid érthető feladatokon
+                alapfogalmakkal találkozhatnak, majd gyakorlati példák következnek ahol rövid érthető felgit adatokon
                 szemléltetjük a az API-k működését. Az utolsó tartalmi részként megoldandó feladatokat találnak, majd
                 ellenőrzés vagy elakadás esetére ezeknek a megoldását.</p>
         </section>
         <section id="fogalomtar"><!-- fogalomtar -->
+            <h2>Fogalomtár</h2>
             <dl>
                 <dt>API</dt>
                 <dd>
@@ -126,8 +127,10 @@
         </section>
 
         <details id="f1" open>
-            <summary>1. feladat Macskák</summary>
-            <p>Ez a táblázat egy pár lehetséges lekérést mutat be.</p>
+            <summary>Feladat Macskák</summary>
+            <p>Ebben a feladatban kipróbálhatsz egy API-t.</p>
+            <p>Ez a táblázat néhány lehetséges lekérést mutat be a <a href="https://cataas.com/">https://cataas.com/</a>
+                oldalról.</p>
             <table>
                 <thead>
                     <tr>
@@ -157,12 +160,6 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><strong>/cat/tag/says/text</strong></td>
-                        <td>Will return a random cat with a <code>tag</code> and saying
-                            <code>text</code>
-                        </td>
-                    </tr>
-                    <tr>
                         <td><strong>/cat/says/text?fontSize=size&amp;fontColor=color</strong></td>
                         <td>Will return a random cat saying <code>text</code> with
                             text's
@@ -175,47 +172,37 @@
                             <code>filter</code> (blur, mono, negate or custom)
                         </td>
                     </tr>
-                    <tr>
-                        <td><strong>/cat?filter=custom&amp;brightness=brightness&amp;lightness=lightness&amp;saturation=saturation&amp;hue=hue</strong>
-                        </td>
-                        <td>Will return a random cat with image filtered by
-                            <code>brightness</code>, <code>lightness</code>, <code>saturation</code> and
-                            <code>hue</code>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>/cat?filter=custom&amp;r=red&amp;g=green&amp;b=blue</strong></td>
-                        <td>Will return a random cat with image filtered by
-                            <code>red</code>, <code>green</code> and <code>blue</code>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
 
 
             <div class="teszt-container">
-                <p>Ebben a feladatban kipróbálhatsz egy api-t. A fenti szabályok szerint add meg a kép forrását,
-                    majd
-                    nyomd meg a gombot.</p>
+                <p class="prompt">A fenti szabályok szerint add meg a kép forrását, majd nyomd meg a gombot.</p>
                 <fieldset>
                     <label for="catImgSource">Kép forrása</label>
-                    <input type="text" name="" id="catImgSource" value="https//cataas.com/cat">
+                    <input type="text" name="" id="catImgSource" value="https://cataas.com/cat">
                     <input class="btn" type="button" value="Mehet" onclick="fetchRandomCatImg();">
                 </fieldset>
 
                 <h4>A kép</h4>
                 <img id="catImg" src="" alt="Random cica a https//cataas.com/-ról">
-                <h5>A json kód a kép mögött</h5>
-                <p id="catJSON"></p>
+
             </div>
 
         </details>
         </section>
         <h2>Hogyan működik?</h2>
+        <h4>A json kód a kép mögött (így tárolja a szerver a kép adatait)</h4>
+        <p id="catJSON"></p>
+        <p>Ebből az adathalmazból be tudjuk ágyazni a weboldalba a számunkra érdekes adatoka.</p>
+
+
+        <h2>Hogyan használjuk az API-kat</h2>
         <p>Ahhoz, hogy a fenti feladatban a választott kép megjelenjen az oldalon, az alábbi kód fut a
             háttérben. </p>
         <code>
             <!-- cat-fetch.js -->
+            MAGYARÁZAT KÉNE
         </code>
         
         <section id="feladat">
@@ -226,6 +213,11 @@
         </section>
 
 
+
+        <details>
+            <summary>Projectfeladat</summary>
+            <p></p>
+        </details>
     </main>
 
     <footer>

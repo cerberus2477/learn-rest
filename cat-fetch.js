@@ -1,18 +1,21 @@
 async function fetchRandomCatImg() {
-
     let catImgElement = document.getElementById('catImg');
     let catJSONElement = document.getElementById('catJSON');
 
-    let apiUrl = catImgSource.value;
+    let userUrl = catImgSource.value;
 
     try {
-        let response = await fetch(apiUrl);
-
+        let response = await fetch(userUrl);
         if (response.ok) {
+            catImgElement.src = response.url;
             let imgUrl = response.url;
-
-            catImgElement.src = imgUrl;
-            catJSONElement.innerText = imgUrl + "?json=true";
+            response = await fetch(imgUrl + "?json=true");
+            if (response.ok) {
+                let jsonData = await response.json(); // Parse JSON response
+                catJSONElement.innerText = JSON.stringify(jsonData); // Display parsed JSON
+            } else {
+                console.error('Hiba:', response.statusText);
+            }
         } else {
             console.error('Hiba:', response.statusText);
         }

@@ -2,22 +2,22 @@
     box-sizing: border-box;
     text-decoration: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
 }
 
 html,
 body {
+    margin: 0;
+    padding: 0;
     font-size: 1.15rem;
 }
 
-p{
+p {
     text-align: justify;
-    font-size: 1.25rem;
-    line-height: 150%;
+    font-size: 1.2rem;
+    line-height: 130%;
 }
 
-nav{
+nav {
     position: fixed;
     top: 0;
     width: 100%;
@@ -26,14 +26,15 @@ nav{
     flex-flow: row;
 }
 
-.nav-item{
+.nav-item {
     color: wheat;
     padding: 0.5em;
     font-size: 2em;
 }
 
-main{
-    margin: 6em 20%;
+main {
+    /* margin: 6em 20%; */
+    margin-inline: 20rem;
 }
 
 table {
@@ -56,25 +57,45 @@ td{
     margin-inline: auto;
 }
 
-dfn{
+dfn {
     cursor: pointer;
     text-decoration: underline;
 }
 
-a{
-    color: inherit  ;
+a {
+    color: inherit;
 }
 
-footer{
+footer {
     background-color: rgb(54, 54, 54);
     color: wheat;
     margin: 0;
     padding: 10px;
 }
 
+.prompt {
+    border-left: 2px solid rgb(60, 120, 230);
+    padding: .7rem;
+    margin-left: .5rem;
+}
 
-@media only screen and (max-width: 800px){
-    main{
+dt {
+    background-color: rgb(255, 255, 159);
+    padding: .3rem;
+}
+
+
+@media only screen and (max-width: 800px) {
+    main {
         margin: 8em 4px;
     }
+}
+
+section {
+    margin-block: 2rem;
+}
+
+details {
+    background-color: lightblue;
+    border: 1px solid rgb(9, 57, 73)
 }
