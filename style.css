@@ -45,12 +45,19 @@ main {
 
 table {
     border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
 }
 
 td,
 th {
     border: 1px solid black;
 }
+
+td{
+    line-break: anywhere;
+}
+
 
 .teszt-container {
     margin-inline: auto;
