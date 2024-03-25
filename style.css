@@ -2,6 +2,10 @@
     box-sizing: border-box;
     text-decoration: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    --clr-blue-mid: rgb(60, 120, 230);
+    --clr-blue-dark: rgb(4, 4, 78);
+    --clr-blue-light: rgb(159, 213, 245);
 }
 
 html,
@@ -34,7 +38,9 @@ nav {
 
 main {
     /* margin: 6em 20%; */
-    margin-inline: 20rem;
+    /* margin-inline: 20rem; */
+    margin-inline: auto;
+    max-width: 1300px;
 }
 
 table {
@@ -67,12 +73,18 @@ a {
 }
 
 footer {
-    background-color: rgb(54, 54, 54);
+    background-color: var(--clr-blue-dark);
     color: wheat;
     margin: 0;
     padding: 10px;
 }
 
+
+.prompt {
+    border-left: 4px solid var(--clr-blue-mid);
+    padding: .5rem;
+    margin-left: .5rem;
+}
 
 
 .code-snippet {
@@ -110,10 +122,27 @@ footer {
 }
 
 section {
-    margin-block: 2rem;
+    margin: 2rem 4rem;
 }
 
-details {
-    background-color: lightblue;
-    border: 1px solid rgb(9, 57, 73)
+.feladat, .levi {
+    background-color: var(--clr-blue-light);
+    border: 1px solid var(--clr-blue-dark);
+    padding: 2rem;
+}
+
+fieldset {
+    border-color: var(--clr-blue-dark);
+}
+
+.btn {
+    padding: .4rem;
+    background-color: var(--clr-blue-dark);
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+.levi{
+    background-color: pink;
 }
