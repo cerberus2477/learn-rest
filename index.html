@@ -9,14 +9,27 @@
     <script defer src="cat-fetch.js"></script>
     <script defer src="app.js"></script>
     <link rel="shortcut icon" href="pic/api.png" type="image/x-icon">
+
+    <!-- kódok színezése -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function () {
+            Prism.highlightAll();
+        });
+    </script> -->
 </head>
 
 <body>
     <nav>
         <a class="logo nav-item" href="#">API alapok</a>
         <a href="#celja" class="nav-item">Oldal celja</a>
-        <a class="nav-item" href="#peldak">Gyakorlati példák</a>
-        <a href="#feladatok" class="nav-item">Feladatok</a>
+        <a href="#fogalomtar" class="nav-item">Fogalomtár</a>
+        <a href="#api" class="nav-item">API</a>
+        <a href="#rest" class="nav-item">REST-API</a>
+        <a href="#macskak" class="nav-item">Macskák</a>
+        <a href="#proj1" class="nav-item">1. Projekt</a>
+        <a href="#proj2" class="nav-item">2. Projekt</a>
     </nav>
     <main>
         <h1>API alapok - REST API</h1>
@@ -32,7 +45,7 @@
                 szemléltetjük a az API-k működését. Az utolsó tartalmi részként megoldandó feladatokat találnak, majd
                 ellenőrzés vagy elakadás esetére ezeknek a megoldását.</p>
         </section>
-        <section id=" fogalomtar"><!-- fogalomtar -->
+        <section id="fogalomtar"><!-- fogalomtar -->
             <h2>Fogalomtár</h2>
             <dl>
                 <dt>API</dt>
@@ -173,7 +186,7 @@
             </ul>
         </section>
 
-        <div id="f1" class="feladat">
+        <div class="feladat" id="macskak">
             <h2>Feladat Macskák</h2>
             <p>Ebben a feladatban kipróbálhatsz egy API-t.</p>
             <p>Ez a táblázat néhány lehetséges lekérést mutat be a <a href="https://cataas.com/">https://cataas.com/</a>
@@ -223,12 +236,13 @@
             </table>
 
 
-            <div class="teszt-container">
+            <div>
                 <p class="prompt">A fenti szabályok szerint add meg a kép forrását, majd nyomd meg a gombot.</p>
                 <fieldset>
                     <label for="catImgSource">Kép forrása</label>
                     <input type="text" name="" id="catImgSource" value="https://cataas.com/cat">
                     <input class="btn" type="button" value="Mehet" onclick="fetchRandomCatImg();">
+                    <p><i>Néhány másodpercbe telhet a kép betöltése.</i></p>
                 </fieldset>
 
                 <h4>A kép</h4>
@@ -237,161 +251,103 @@
             </div>
 
         </div>
-        </section>
+
         <h2>Hogyan működik?</h2>
         <h4>A json kód a kép mögött (így tárolja a szerver a kép adatait)</h4>
         <div class="feladat">
             <p id="catJSON"></p>
         </div>
 
-        <p>Ebből az adathalmazból be tudjuk ágyazni a weboldalba a számunkra érdekes adatokat.</p>
-
-        <div class="levi">
-            ide lehetne egy példa hogy pl tag: maine coon amit lekér az apiból, aztán feladat hogy kérje le a kép
-            feltöltésének dátumár
-        </div>
+        <p>Ebből az adathalmazból ha szükéges, be tudjuk ágyazni a weboldalba a számunkra érdekes adatokat, akár csak
+            magát a képet.</p>
 
         <h2>Hogyan használjuk az API-kat</h2>
         <p>Ahhoz, hogy a fenti feladatban a választott kép megjelenjen az oldalon, az alábbi kód fut a
             háttérben. </p>
 
         <p>Figyeljük meg a <strong>fetch()</strong> függvény használatát!</p>
-        <code>
-            <pre>
-            async function fetchRandomCatImg() {
-                let catImgElement = document.getElementById('catImg');
-                let catJSONElement = document.getElementById('catJSON');
-            
-                let userUrl = catImgSource.value;
-            
-                try {
-                    let response = await fetch(userUrl);
-                    if (response.ok) {
-                        catImgElement.src = response.url;
-                        let imgUrl = response.url;
-                        response = await fetch(imgUrl + "?json=true");
+        <div class="code-snippet">
+            <pre class="language-js">
+                async function fetchRandomCatImg() {
+                    let catImgElement = document.getElementById('catImg');
+                    let catJSONElement = document.getElementById('catJSON');
+                
+                    let userUrl = catImgSource.value;
+                
+                    try {
+                        let response = await fetch(userUrl);
                         if (response.ok) {
-                            let jsonData = await response.json();
-                            catJSONElement.innerText = JSON.stringify(jsonData);
+                            catImgElement.src = response.url;
+                            let imgUrl = response.url;
+                            response = await fetch(imgUrl + "?json=true");
+                            if (response.ok) {
+                                let jsonData = await response.json();
+                                catJSONElement.innerText = JSON.stringify(jsonData);
+                            } else {
+                                console.error('Hiba:', response.statusText);
+                            }
                         } else {
                             console.error('Hiba:', response.statusText);
                         }
-                    } else {
-                        console.error('Hiba:', response.statusText);
+                    } catch (error) {
+                        console.error('Hiba:', error);
                     }
-                } catch (error) {
-                    console.error('Hiba:', error);
                 }
-            }
-            
-            fetchRandomCatImg(); //meghívjuk a függvényt először
-        </pre>
-        </code>
+                
+                fetchRandomCatImg(); //meghívjuk a függvényt először
+            </pre>
+            <button class="btn copy-btn" onclick="copyCode(this)">Másolás</button>
+        </div>
 
-        <section id="feladat">
+        <section class="feladat" id="proj1">
+            <h3>1. projekt - Todo alkalmazás REST API - szerver</h3>
+
+            <p class="prompt">Készíts egy egyszerű Todo alkalmazás szerveroldali REST API-t! Az alkalmazásnak
+                lehetőséget kell
+                biztosítania a felhasználók számára a teendők (todos) létrehozására, listázására, frissítésére és
+                törlésére.</p>
+
+            <p>Az API-nak a következő funkcionalitást kell biztosítania:</p>
+            <ol>
+                <li>`GET /todos`: Az összes todo listázása JSON formátumban.</li>
+                <li>`POST /todos`: Új todo létrehozása a kapott adatok alapján. A következő adatokat kell fogadnia:
+                    `title` (todo címe), `description` (todo leírása), `due_date` (todo határidője). A létrehozott
+                    todo objektumot kell visszaadnia JSON formátumban.</li>
+                <li>`GET /todos/{id}`: Az adott azonosítójú todo részleteinek lekérése JSON formátumban.</li>
+                <li>`PUT /todos/{id}`: Az adott azonosítójú todo frissítése a kapott adatok alapján. A következő
+                    adatok módosíthatók: `title`, `description`, `due_date`. A frissített todo objektumot kell
+                    visszaadnia JSON formátumban.</li>
+                <li>`DELETE /todos/{id}`: Az adott azonosítójú todo törlése.</li>
+            </ol>
+
+            <p>Minden endpointnak a megfelelő HTTP státuszkódot kell visszaadnia a kérések feldolgozása során, és a
+                kliensekkel való kommunikáció JSON formátumban történjen.</p>
+
+            <p>Teszteléshez használhatsz API fejlesztőeszközöket, mint például a Postman vagy az Insomnia, hogy
+                ellenőrizd az endpointok működését, valamint írj egységteszteket a különböző műveletekhez. Fontos,
+                hogy az alkalmazásod a RESTful elveket kövesse és megfeleljen az elvárásoknak.</p>
+
+
+            <p>Segítségül adunk hozzá egy adatbázis létrehozására alkalmas sql kódot</p>
+            <div class="code-snippet">
+                <pre class="language-sql">
+                    CREATE TABLE todos (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        title VARCHAR(255) NOT NULL,
+                        description TEXT,
+                        due_date DATE
+                    );
+                    
+                </pre>
+                <button class="btn copy-btn" onclick="copyCode(this)">Másolás</button>
+            </div>
+
             <details>
-                <summary>1.feladat</summary>
-                <h3>Todo alkalmazás REST API - szerver</h3>
-
-                <p>Készíts egy egyszerű Todo alkalmazás szerveroldali REST API-t! Az alkalmazásnak lehetőséget kell
-                    biztosítania a felhasználók számára a teendők (todos) létrehozására, listázására, frissítésére és
-                    törlésére.</p>
-
-                <p>Az API-nak a következő funkcionalitást kell biztosítania:</p>
-                <ol>
-                    <li>`GET /todos`: Az összes todo listázása JSON formátumban.</li>
-                    <li>`POST /todos`: Új todo létrehozása a kapott adatok alapján. A következő adatokat kell fogadnia:
-                        `title` (todo címe), `description` (todo leírása), `due_date` (todo határidője). A létrehozott
-                        todo objektumot kell visszaadnia JSON formátumban.</li>
-                    <li>`GET /todos/{id}`: Az adott azonosítójú todo részleteinek lekérése JSON formátumban.</li>
-                    <li>`PUT /todos/{id}`: Az adott azonosítójú todo frissítése a kapott adatok alapján. A következő
-                        adatok módosíthatók: `title`, `description`, `due_date`. A frissített todo objektumot kell
-                        visszaadnia JSON formátumban.</li>
-                    <li>`DELETE /todos/{id}`: Az adott azonosítójú todo törlése.</li>
-                </ol>
-
-                <p>Minden endpointnak a megfelelő HTTP státuszkódot kell visszaadnia a kérések feldolgozása során, és a
-                    kliensekkel való kommunikáció JSON formátumban történjen.</p>
-
-                <p>Teszteléshez használhatsz API fejlesztőeszközöket, mint például a Postman vagy az Insomnia, hogy
-                    ellenőrizd az endpointok működését, valamint írj egységteszteket a különböző műveletekhez. Fontos,
-                    hogy az alkalmazásod a RESTful elveket kövesse és megfeleljen az elvárásoknak.</p>
-
-
-                <p>segítségül adunk hozzá egy adatbázis létrehozására alkalmas sql kódot</p>
+                <summary>Egy lehetséges megoldás</summary>
+                <p><i>atodo.php</i></p>
                 <div class="code-snippet">
-                    <pre id="myPreTag">
-                        CREATE TABLE todos (
-                            id INT AUTO_INCREMENT PRIMARY KEY,
-                            title VARCHAR(255) NOT NULL,
-                            description TEXT,
-                            due_date DATE
-                        );
-                        
-                    </pre>
-                    <button id="copyButton">Copy</button>
-                </div>
-
-            </details>
-            <details>
-                <summary>2.feladat</summary>
-                <h3>Todoo alkalmazás REST - kliens</h3>
-
-                <p>Készítsen egy olyan HTML és JavaScript oldalt, amely képes kihasználni az előző feladatban
-                    létrehozott Todo alkalmazás REST API összes funkcióját. Az oldalnak lehetőséget kell biztosítania a
-                    felhasználók számára a teendők (todos) létrehozására, listázására, frissítésére és törlésére.</p>
-
-                <p>Az oldalnak tartalmaznia kell a következő elemeket és funkciókat:</p>
-
-                <ol>
-                    <li>
-                        <p>Todo listázása:</p>
-                        <ul>
-                            <li>Az összes teendőt meg kell jeleníteni a felhasználónak, ha vannak.</li>
-                            <li>Minden teendőnek meg kell jeleníteni a címét, leírását és határidejét.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p>új todo létrehozása</p>
-                        <ul>
-                            <li>Egy űrlap segítségével lehetőség van új teendő létrehozására.</li>
-                            <li>A felhasználónak meg kell adnia a teendő címét, leírását és határidejét.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p>Teendő frissítése:</p>
-                        <ul>
-                            <li>Minden teendő mellett kell lennie egy szerkesztés gombnak, amely segítségével
-                                módosítható a teendő adatai.</li>
-                            <li>A szerkesztés gomb megnyomására megjelenik egy űrlap, ahol a felhasználó módosíthatja a
-                                címet, leírást és határidőt.</li>
-                            <li>A módosítás elküldése után a teendő adatai frissülniük kell az API-n keresztül.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p>Teendő törlése:</p>
-                        <ul>
-                            <li>Minden teendő mellett kell lennie egy törlés gombnak, amely segítségével törölhető a
-                                teendő az adatbázisból az API segítségével.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p>Az oldalnak a felhasználói interakciókra reagálnia kell anélkül, hogy az oldalt újra kellene
-                            betölteni. A kommunikáció az API-val JavaScript segítségével AJAX hívásokkal történjen.</p>
-                    </li>
-                    <li>Az elkészült oldalt kérjük a megadott API-hoz csatlakozva tesztelni, hogy minden funkció
-                        megfelelően működik-e.</li>
-                </ol>
-
-
-
-            </details>
-
-            <details>
-                <summary>1.feladat megoldása</summary>
-                <div class="code-snippet">
-                    <pre id="myPreTag">
-                        <?php
+                    <pre class="language-php">
+                    <?php
 
 // Adatbázis kapcsolódás
 $servername = "localhost";
@@ -402,197 +358,250 @@ $database = "todo_app";
 $conn = new mysqli($servername, $username, $password, $database);
 
 if ($conn->connect_error) {
-    die("Nem sikerült kapcsolódni az adatbázishoz: " . $conn->connect_error);
+die("Nem sikerült kapcsolódni az adatbázishoz: " . $conn->connect_error);
 }
 
 // API végpontok definiálása
 
 // GET /todos
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM todos WHERE id = $id";
-    $result = $conn->query($sql);
+$id = $_GET['id'];
+$sql = "SELECT * FROM todos WHERE id = $id";
+$result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        echo json_encode($row);
-    } else {
-        http_response_code(404);
-        echo json_encode(array("message" => "Todo nem található"));
-    }
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    echo json_encode($row);
+} else {
+    http_response_code(404);
+    echo json_encode(array("message" => "Todo nem található"));
+}
 }
 
 // POST /todos
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents("php://input"), true);
-    $title = $data['title'];
-    $description = $data['description'];
-    $due_date = $data['due_date'];
+$data = json_decode(file_get_contents("php://input"), true);
+$title = $data['title'];
+$description = $data['description'];
+$due_date = $data['due_date'];
 
-    $sql = "INSERT INTO todos (title, description, due_date) VALUES ('$title', '$description', '$due_date')";
-    if ($conn->query($sql) === TRUE) {
-
-                    </pre>
-                    <button id="copyButton">Copy</button>
-                </div>
-
-                <div class="code-snippet">
-                    <pre id="myPreTag">
-        $last_id = $conn->insert_id;
-        $sql = "SELECT * FROM todos WHERE id = $last_id";
-        $result = $conn->query($sql);
-        
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            echo json_encode($row);
-        }
-    } else {
-        http_response_code(500);
-        echo json_encode(array("message" => "Sikertelen létrehozás"));
+$sql = "INSERT INTO todos (title, description, due_date) VALUES ('$title', '$description', '$due_date')";
+if ($conn->query($sql) === TRUE) {
+    $last_id = $conn->insert_id;
+    $sql = "SELECT * FROM todos WHERE id = $last_id";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        echo json_encode($row);
     }
+} else {
+    http_response_code(500);
+    echo json_encode(array("message" => "Sikertelen létrehozás"));
+}
 }
 
 // PUT /todos/{id}
 if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $data = json_decode(file_get_contents("php://input"), true);
-    $title = $data['title'];
-    $description = $data['description'];
-    $due_date = $data['due_date'];
+$id = $_GET['id'];
+$data = json_decode(file_get_contents("php://input"), true);
+$title = $data['title'];
+$description = $data['description'];
+$due_date = $data['due_date'];
 
-    $sql = "UPDATE todos SET title='$title', description='$description', due_date='$due_date' WHERE id=$id";
+$sql = "UPDATE todos SET title='$title', description='$description', due_date='$due_date' WHERE id=$id";
 
-    if ($conn->query($sql) === TRUE) {
-        $sql = "SELECT * FROM todos WHERE id = $id";
-        $result = $conn->query($sql);
-        
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            echo json_encode($row);
-        }
-    } else {
-        http_response_code(500);
-        echo json_encode(array("message" => "Sikertelen frissítés"));
+if ($conn->query($sql) === TRUE) {
+    $sql = "SELECT * FROM todos WHERE id = $id";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        echo json_encode($row);
     }
+} else {
+    http_response_code(500);
+    echo json_encode(array("message" => "Sikertelen frissítés"));
+}
 }
 
 // DELETE /todos/{id}
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = "DELETE FROM todos WHERE id = $id";
+$id = $_GET['id'];
+$sql = "DELETE FROM todos WHERE id = $id";
 
-    if ($conn->query($sql) === TRUE) {
-        http_response_code(204);
-    } else {
-        http_response_code(500);
-        echo json_encode(array("message" => "Sikertelen törlés"));
-    }
+if ($conn->query($sql) === TRUE) {
+    http_response_code(204);
+} else {
+    http_response_code(500);
+    echo json_encode(array("message" => "Sikertelen törlés"));
+}
 }
 
 $conn->close();
 ?>
-
                     </pre>
-                    <button id="copyButton">Copy</button>
-                </div>
-            </details>
-            <details>
-                <summary>2.feladat megoldása</summary>
-                <div class="code-snippet">
-                    <pre id="myPreTag">
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Todo App&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Todo App&lt;/h1&gt;
-
-    &lt;form id="todoForm"&gt;
-        &lt;input type="text" id="title" placeholder="Cím" required&gt;
-        &lt;textarea id="description" placeholder="Leírás"&gt;&lt;/textarea&gt;
-        &lt;input type="date" id="dueDate" required&gt;
-        &lt;button type="submit"&gt;Hozzáadás&lt;/button&gt;
-    &lt;/form&gt;
-
-    &lt;ul id="todoList"&gt;&lt;/ul&gt;
-
-    &lt;script&gt;
-        const todoForm = document.getElementById('todoForm');
-        const todoList = document.getElementById('todoList');
-
-        // Az összes teendő betöltése
-        function loadTodos() {
-            fetch('/todos')
-                .then(response => response.json())
-                .then(todos => {
-                    todoList.innerHTML = '';
-                    todos.forEach(todo => {
-                        const li = document.createElement('li');
-                        li.innerHTML = `&lt;b>${todo.title}&lt;/b>&lt;br>${todo.description}&lt;br>Határidő: ${todo.due_date}
-                            &lt;button onclick="editTodo(${todo.id})">Szerkesztés&lt;/button>
-                            &lt;button onclick="deleteTodo(${todo.id})">Törlés&lt;/button>`;
-                        todoList.appendChild(li);
-                    });
-                })
-                .catch(error => console.error('Hiba a teendők betöltésekor:', error));
-        }
-
-        // Új teendő létrehozása
-        todoForm.addEventListener('submit', event => {
-            event.preventDefault();
-            const formData = new FormData(todoForm);
-            fetch('/todos', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    title: formData.get('title'),
-                    description: formData.get('description'),
-                    due_date: formData.get('dueDate')
-                })
-            })
-            .then(response => response.json())
-            .then(() => {
-                loadTodos();
-                todoForm.reset();
-            })
-            .catch(error => console.error('Hiba az új teendő létrehozásakor:', error));
-        });
-
-        // Teendő szerkesztése
-        function editTodo(id) {
-            // Implementáció hiányzik
-            console.log('Teendő szerkesztése id:', id);
-        }
-
-        // Teendő törlése
-        function deleteTodo(id) {
-            fetch(`/todos/${id}`, {
-                method: 'DELETE'
-            })
-            .then(() => {
-                loadTodos();
-            })
-            .catch(error => console.error('Hiba a teendő törlésekor:', error));
-        }
-
-        // Teendők betöltése az oldal betöltésekor
-        window.addEventListener('load', () => {
-            loadTodos();
-        });
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt; 
- 
-                    </pre>
-                    <button id="copyButton">Copy</button>
+                    <button class="btn copy-btn" onclick="copyCode(this)">Másolás</button>
                 </div>
             </details>
         </section>
+
+        <section class="feladat" id="proj2">
+            <h3>2. projekt - Todo alkalmazás REST - kliens</h3>
+
+            <p class="prompt">Készítsen egy olyan HTML és JavaScript oldalt, amely képes kihasználni az előző
+                feladatban
+                létrehozott Todo alkalmazás REST API összes funkcióját. Az oldalnak lehetőséget kell biztosítania a
+                felhasználók számára a teendők (todos) létrehozására, listázására, frissítésére és törlésére.</p>
+
+            <p>Az oldalnak tartalmaznia kell a következő elemeket és funkciókat:</p>
+
+            <ol>
+                <li>
+                    <p>Todo listázása:</p>
+                    <ul>
+                        <li>Az összes teendőt meg kell jeleníteni a felhasználónak, ha vannak.</li>
+                        <li>Minden teendőnek meg kell jeleníteni a címét, leírását és határidejét.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p>Új todo létrehozása:</p>
+                    <ul>
+                        <li>Egy űrlap segítségével lehetőség van új teendő létrehozására.</li>
+                        <li>A felhasználónak meg kell adnia a teendő címét, leírását és határidejét.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p>Todo frissítése:</p>
+                    <ul>
+                        <li>Minden teendő mellett kell lennie egy szerkesztés gombnak, amely segítségével
+                            módosítható a teendő adatai.</li>
+                        <li>A szerkesztés gomb megnyomására megjelenik egy űrlap, ahol a felhasználó módosíthatja a
+                            címet, leírást és határidőt.</li>
+                        <li>A módosítás elküldése után a teendő adatai frissülniük kell az API-n keresztül.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p>Todo törlése:</p>
+                    <ul>
+                        <li>Minden teendő mellett kell lennie egy törlés gombnak, amely segítségével törölhető a
+                            teendő az adatbázisból az API segítségével.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p>Az oldalnak a felhasználói interakciókra reagálnia kell anélkül, hogy az oldalt újra kellene
+                        betölteni. A kommunikáció az API-val JavaScript segítségével AJAX hívásokkal történjen.</p>
+                </li>
+                <li>Az elkészült oldalt kérjük a megadott API-hoz csatlakozva tesztelni, hogy minden funkció
+                    megfelelően működik-e.</li>
+            </ol>
+
+            <details>
+                <summary>Egy lehetséges megoldás</summary>
+                <p><i>todo.html</i></p>
+                <div class="code-snippet">
+                    <pre class="language-html">
+                        &lt;!DOCTYPE html&gt;
+                        &lt;html lang="hu"&gt;
+                        
+                        &lt;head&gt;
+                            &lt;meta charset="UTF-8"&gt;
+                            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                            &lt;title&gt;Todo App&lt;/title&gt;
+                            &lt;script src="todo.js"&gt;&lt;/script&gt;
+                        &lt;/head&gt;
+                        
+                        &lt;body&gt;
+                            &lt;h1&gt;Todo App&lt;/h1&gt;
+                        
+                            &lt;form id="todoForm"&gt;
+                                &lt;input type="text" id="title" placeholder="Cím" required&gt;
+                                &lt;textarea id="description" placeholder="Leírás"&gt;&lt;/textarea&gt;
+                                &lt;input type="date" id="dueDate" required&gt;
+                                &lt;button type="submit"&gt;Hozzáadás&lt;/button&gt;
+                            &lt;/form&gt;
+                        
+                            &lt;ul id="todoList"&gt;&lt;/ul&gt;
+                        &lt;/body&gt;
+                        
+                        &lt;/html&gt;
+                    </pre>
+                    <button class="btn" onclick="copyCode(this)">Másolás</button>
+                </div>
+                <p><i>todo.js</i></p>
+                <div class="code-snippet">
+                    <pre class="language-js">
+                        const todoForm = document.getElementById('todoForm');
+                        const todoList = document.getElementById('todoList');
+                        
+                        // Az összes teendő betöltése
+                        function loadTodos() {
+                            fetch('/todos')
+                                .then(response => response.json())
+                                .then(todos => {
+                                    todoList.innerHTML = '';
+                                    todos.forEach(todo => {
+                                        const li = document.createElement('li');
+                                        li.innerHTML = `&lt;/b&gt;${todo.title}&lt;/b&gt;&lt;br&gt;${todo.description}&lt;br>Határidő: ${todo.due_date}
+                                        &lt;button onclick="editTodo(${todo.id})">Szerkesztés&lt;/button&gt;
+                                        &lt;button onclick="deleteTodo(${todo.id})">Törlés&lt;/button&gt;`;
+                                        todoList.appendChild(li);
+                                    });
+                                })
+                                .catch(error => console.error('Hiba a teendők betöltésekor:', error));
+                        }
+                        
+                        // Új teendő létrehozása
+                        todoForm.addEventListener('submit', event => {
+                            event.preventDefault();
+                            const formData = new FormData(todoForm);
+                            fetch('/todos', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    title: formData.get('title'),
+                                    description: formData.get('description'),
+                                    due_date: formData.get('dueDate')
+                                })
+                            })
+                                .then(response => response.json())
+                                .then(() => {
+                                    loadTodos();
+                                    todoForm.reset();
+                                })
+                                .catch(error => console.error('Hiba az új teendő létrehozásakor:', error));
+                        });
+                        
+                        // Teendő szerkesztése
+                        function editTodo(id) {
+                            // Implementáció hiányzik
+                            console.log('Teendő szerkesztése id:', id);
+                        }
+                        
+                        // Teendő törlése
+                        function deleteTodo(id) {
+                            fetch(`/todos/${id}`, {
+                                method: 'DELETE'
+                            })
+                                .then(() => {
+                                    loadTodos();
+                                })
+                                .catch(error => console.error('Hiba a teendő törlésekor:', error));
+                        }
+                        
+                        // Teendők betöltése az oldal betöltésekor
+                        window.addEventListener('load', () => {
+                            loadTodos();
+                        });
+                    </pre>
+                    <button class="btn" onclick="copyCode(this)">Másolás</button>
+                </div>
+            </details>
+
+        </section>
+
 
 
     </main>
@@ -604,9 +613,6 @@ $conn->close();
             <li><a href="https//github.com/public-apis/public-apis?tab=readme-ov-file">https//github.com/public-apis</a>
             </li>
             <li><a href="https//http.cat/">https//http.cat/</a></li>
-            <li><a
-                    href="https://kiszervezettmarketing.hu/weboldal-keszites/">https://kiszervezettmarketing.hu/weboldal-keszites/api-jelentese/</a>
-            </li>
         </ul>
         <p>Forráslinkek</p>
         <ul>
@@ -614,6 +620,9 @@ $conn->close();
                     - API definíció</a></li>
             <li><a href="https://www.flaticon.com/free-icon/api_3234207">https://www.flaticon.com/free-icon/api_3234207
                     - favikon</a></li>
+            <li><a
+                    href="https://kiszervezettmarketing.hu/weboldal-keszites/">https://kiszervezettmarketing.hu/weboldal-keszites/api-jelentese/</a>
+            </li>
         </ul>
 
     </footer>

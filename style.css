@@ -28,12 +28,13 @@ nav {
     display: flex;
     background-color: dimgray;
     flex-flow: row;
+    z-index: 99;
 }
 
 .nav-item {
     color: wheat;
     padding: 0.5em;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 main {
@@ -41,6 +42,7 @@ main {
     /* margin-inline: 20rem; */
     margin-inline: auto;
     max-width: 1300px;
+    margin-top: 8rem;
 }
 
 table {
@@ -54,14 +56,10 @@ th {
     border: 1px solid black;
 }
 
-td{
+td {
     line-break: anywhere;
 }
 
-
-.teszt-container {
-    margin-inline: auto;
-}
 
 dfn {
     cursor: pointer;
@@ -89,43 +87,67 @@ footer {
 
 .code-snippet {
     position: relative;
-    background: #d3d6db;
+    background: #d8e6fc;
     padding: 10px;
-    font-size: 15px;
+    font-size: 12px;
     word-wrap: break-word;
     white-space: pre-wrap;
-    border: 1px solid #e6e7e9;
-    max-width: 500px;
-   }
-   
-   #copyButton {
-    position: absolute;
-    top: 2px;
-    right: 10px;
+    border: 1px solid #a9c4f8;
+    /* max-width: 500px; */
+}
+
+pre {
+    background: #d8e6fc;
+}
+
+.logo {
+    margin-right: auto;
+}
+
+.btn {
+    padding: .4rem;
+    background-color: var(--clr-blue-dark);
+    color: white;
+    border: none;
+    border-radius: 2px;
     cursor: pointer;
-    color: #fff;
-    background: gray;
-    border-radius: 0.5em;
-    padding: 2px 7px;
-   }
-   
-   #copyButton:hover {
+}
+
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#copyButton:hover {
     color: #000;
-   }
-   
+}
+
 
 
 @media only screen and (max-width: 800px) {
     main {
         margin: 8em 4px;
     }
+
+    html,
+    body {
+        font-size: 1rem;
+    }
+
+    .nav-item {
+        font-size: 1.2rem;
+    }
+
 }
 
 section {
     margin: 2rem 4rem;
 }
 
-.feladat, .levi {
+.feladat,
+.levi {
     background-color: var(--clr-blue-light);
     border: 1px solid var(--clr-blue-dark);
     padding: 2rem;
@@ -135,14 +157,15 @@ fieldset {
     border-color: var(--clr-blue-dark);
 }
 
-.btn {
-    padding: .4rem;
-    background-color: var(--clr-blue-dark);
-    color: white;
-    border: none;
-    border-radius: 2px;
+
+summary {
+    font-weight: bold;
 }
 
-.levi{
-    background-color: pink;
+h2 {
+    text-decoration: 4px var(--clr-blue-mid) underline;
+}
+
+img {
+    max-width: 100%;
 }

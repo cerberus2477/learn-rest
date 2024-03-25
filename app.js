@@ -1,20 +1,20 @@
-document.getElementById('copyButton').addEventListener('click', function() {
-    const preTag = document.getElementById('myPreTag');
-    const range = document.createRange();
-    range.selectNode(preTag);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-   
-    try {
-       document.execCommand('copy');
-       this.innerText = 'Copied!';
-       setTimeout(() => {
-         this.innerText = 'Copy';
-       }, 2000);
-    } catch (err) {
-       console.error('Unable to copy text:', err);
-    } finally {
-       window.getSelection().removeAllRanges();
-    }
-   });
-   
+// a kódrészleteknél a másolás gomb kijelöli a kódot
+function copyCode(button) {
+   const preTag = button.previousElementSibling;
+   const range = document.createRange();
+   range.selectNode(preTag);
+
+   try {
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      button.innerText = 'Másolva!';
+      setTimeout(() => {
+         button.innerText = 'Másolás';
+      }, 2000);
+   } catch (err) {
+      console.error('Nem sikerült a szöveg másolása:', err);
+   } finally {
+      window.getSelection().removeAllRanges();
+   }
+}
