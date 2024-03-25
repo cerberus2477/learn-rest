@@ -32,20 +32,31 @@
                 szemléltetjük a az API-k működését. Az utolsó tartalmi részként megoldandó feladatokat találnak, majd
                 ellenőrzés vagy elakadás esetére ezeknek a megoldását.</p>
         </section>
-        <section id="fogalomtar"><!-- fogalomtar -->
+        <section id=" fogalomtar"><!-- fogalomtar -->
             <h2>Fogalomtár</h2>
             <dl>
                 <dt>API</dt>
                 <dd>
-                    <p>Az <dfn title="application programming interface">API</dfn> egy angol kifejezés rövidítése, ami
-                        magyarul „alkalmazásprogramozási felületet” jelent. Az API-k a szoftverfejlesztők munkáját
-                        hivatottak megkönnyíteni azzal, hogy hozzáférést biztosítanak egy adott szoftver vagy eszköz
+                    <p>Az <dfn title="application programming interface">API</dfn> egy angol kifejezés
+                        rövidítése, ami
+                        magyarul <i>„alkalmazásprogramozási felület"</i>-et jelent. Az API-k a
+                        szoftverfejlesztők munkáját
+                        hivatottak megkönnyíteni azzal, hogy hozzáférést biztosítanak egy adott szoftver
+                        vagy eszköz
                         utasításkészletéhez.</p>
                 </dd>
                 <dt>REST-API</dt>
                 <dd>
-                    <p>Az <dfn title="application programming interface">REST-API</dfn>
-                    </p>
+                    <p>A <dfn title="Representational State Transfer application programming interface">REST-API</dfn>
+                        magyarul <i>"Állapotátadásos alkalmazásprogramozási
+                            felület" </i>néven ismert. Ez egy olyan API típus, amelyet
+                        állapotmentességre terveztek, és az alapvető HTTP módszerekre (GET, POST, PUT,
+                        DELETE) támaszkodik a
+                        kommunikáció során. Az átláthatóság, megbízhatóság és skálázhatóság elvein
+                        működik. A REST API-kat
+                        általában webfejlesztésben használják, hogy lehetővé tegyék a kommunikációt
+                        különböző rendszerek
+                        vagy szolgáltatások között az interneten keresztül.</p>
                 </dd>
             </dl>
         </section>
@@ -125,18 +136,40 @@
 
         <section id="rest">
             <h2>Representational State Transfer (REST)</h2>
-            <p>A Representational State Transfer (REST) egy architekturális stílus, amely meghatározza egy készlet korlátozást a webes szolgáltatások létrehozásához. A REST API egy egyszerű és rugalmas módszer a webes szolgáltatások elérésére anélkül, hogy bármilyen feldolgozást végeznénk.</p>
-            
+            <p>A Representational State Transfer (REST) egy architekturális stílus, amely meghatározza egy készlet
+                korlátozást a webes szolgáltatások létrehozásához. A REST API egy egyszerű és rugalmas módszer a webes
+                szolgáltatások elérésére anélkül, hogy bármilyen feldolgozást végeznénk.</p>
+
             <h3>Hogyan működik?</h3>
-            <p>Egy kérés kerül elküldésre a kliensről a szerverre egy webes URL formájában HTTP GET vagy POST vagy PUT vagy DELETE kérés formájában. Ezután a válasz érkezik vissza a szerverről egy erőforrás formájában, ami bármi lehet, mint HTML, XML, kép vagy JSON. De manapság a JSON a legnépszerűbb formátum a webes szolgáltatásokban.</p>
-            
+            <p>Egy kérés kerül elküldésre a kliensről a szerverre egy webes URL formájában HTTP GET vagy POST vagy PUT
+                vagy DELETE kérés formájában. Ezután a válasz érkezik vissza a szerverről egy erőforrás formájában, ami
+                bármi lehet, mint HTML, XML, kép vagy JSON. De manapság a JSON a legnépszerűbb formátum a webes
+                szolgáltatásokban.</p>
+
             <h3>RESTful Szolgáltatásokhoz HTTP Metódusok használata</h3>
             <ul>
-                <li><strong>GET:</strong> A HTTP GET metódust arra használjuk, hogy egy erőforrás reprezentációját olvassuk (vagy lekérjük). Biztonságos esetben a GET XML vagy JSON reprezentációt ad vissza és HTTP válaszként a 200-as (OK) HTTP válaszkódot. Hiba esetén leggyakrabban 404-et (NEM TALÁLT) vagy 400-at (ROSSZ KÉRELEM) ad vissza.</li>
-                <li><strong>POST:</strong> A POST igét leggyakrabban új erőforrások létrehozására használják. Különösen arra szolgál, hogy alárendelt erőforrásokat hozzon létre. Sikeres létrehozás esetén HTTP státuszként 201-t ad vissza, és a Válasz fejléccel egy linket a létrehozott erőforrásra az újonnan létrehozott erőforrással és a 201 HTTP státusszal.</li>
-                <li><strong>PUT:</strong> Ez a metódus a képességek frissítésére szolgál. A PUT azonban akkor is használható erőforrás létrehozására, ha az erőforrás-azonosítót a kliens, és nem a szerver választja ki. Más szóval, ha a PUT egy olyan URI-hoz történik, amely nem létező erőforrásazonosító értékét tartalmazza. Sikeres frissítés esetén a PUT 200-at ad vissza (vagy 204-et, ha a testben nincs tartalom). Ha a PUT-ot létrehozásra használjuk, sikeres létrehozás esetén HTTP státuszként 201-et adunk vissza. A PUT nem biztonságos művelet, de idempotens.</li>
-                <li><strong>PATCH:</strong> A PATCH-et a képességek módosítására használják. A PATCH kérés csak a változtatásokat tartalmazza az erőforráson, nem pedig a teljes erőforrást. Ez hasonlít a PUT-hoz, de a test egy olyan utasításkészletet tartalmazza, amely leírja, hogyan kell módosítani egy erőforrást a szerveren a meglévő verzió egy új verziójának előállításához. Ez azt jelenti, hogy a PATCH test nem csak az erőforrás egy módosított részét kell tartalmaznia, hanem valamilyen patch nyelvet, mint például a JSON Patch vagy az XML Patch. A PATCH nem biztonságos és nem idempotens.</li>
-                <li><strong>DELETE:</strong> Ezt a módszert egy URI által azonosított erőforrás törlésére használják. Sikeres törlés esetén a HTTP státuszkódot 200 (OK) és a választestet adja vissza.</li>
+                <li><strong>GET:</strong> A HTTP GET metódust arra használjuk, hogy egy erőforrás reprezentációját
+                    olvassuk (vagy lekérjük). Biztonságos esetben a GET XML vagy JSON reprezentációt ad vissza és HTTP
+                    válaszként a 200-as (OK) HTTP válaszkódot. Hiba esetén leggyakrabban 404-et (NEM TALÁLT) vagy 400-at
+                    (ROSSZ KÉRELEM) ad vissza.</li>
+                <li><strong>POST:</strong> A POST igét leggyakrabban új erőforrások létrehozására használják. Különösen
+                    arra szolgál, hogy alárendelt erőforrásokat hozzon létre. Sikeres létrehozás esetén HTTP státuszként
+                    201-t ad vissza, és a Válasz fejléccel egy linket a létrehozott erőforrásra az újonnan létrehozott
+                    erőforrással és a 201 HTTP státusszal.</li>
+                <li><strong>PUT:</strong> Ez a metódus a képességek frissítésére szolgál. A PUT azonban akkor is
+                    használható erőforrás létrehozására, ha az erőforrás-azonosítót a kliens, és nem a szerver választja
+                    ki. Más szóval, ha a PUT egy olyan URI-hoz történik, amely nem létező erőforrásazonosító értékét
+                    tartalmazza. Sikeres frissítés esetén a PUT 200-at ad vissza (vagy 204-et, ha a testben nincs
+                    tartalom). Ha a PUT-ot létrehozásra használjuk, sikeres létrehozás esetén HTTP státuszként 201-et
+                    adunk vissza. A PUT nem biztonságos művelet, de idempotens.</li>
+                <li><strong>PATCH:</strong> A PATCH-et a képességek módosítására használják. A PATCH kérés csak a
+                    változtatásokat tartalmazza az erőforráson, nem pedig a teljes erőforrást. Ez hasonlít a PUT-hoz, de
+                    a test egy olyan utasításkészletet tartalmazza, amely leírja, hogyan kell módosítani egy erőforrást
+                    a szerveren a meglévő verzió egy új verziójának előállításához. Ez azt jelenti, hogy a PATCH test
+                    nem csak az erőforrás egy módosított részét kell tartalmaznia, hanem valamilyen patch nyelvet, mint
+                    például a JSON Patch vagy az XML Patch. A PATCH nem biztonságos és nem idempotens.</li>
+                <li><strong>DELETE:</strong> Ezt a módszert egy URI által azonosított erőforrás törlésére használják.
+                    Sikeres törlés esetén a HTTP státuszkódot 200 (OK) és a választestet adja vissza.</li>
             </ul>
         </section>
 
@@ -214,7 +247,8 @@
         <p>Ebből az adathalmazból be tudjuk ágyazni a weboldalba a számunkra érdekes adatokat.</p>
 
         <div class="levi">
-            ide lehetne egy példa hogy pl tag: maine coon amit lekér az apiból, aztán feladat hogy kérje le a kép feltöltésének dátumár
+            ide lehetne egy példa hogy pl tag: maine coon amit lekér az apiból, aztán feladat hogy kérje le a kép
+            feltöltésének dátumár
         </div>
 
         <h2>Hogyan használjuk az API-kat</h2>
@@ -253,27 +287,36 @@
             fetchRandomCatImg(); //meghívjuk a függvényt először
         </pre>
         </code>
-        
+
         <section id="feladat">
             <details>
                 <summary>1.feladat</summary>
                 <h3>Todo alkalmazás REST API - szerver</h3>
 
-                <p>Készíts egy egyszerű Todo alkalmazás szerveroldali REST API-t! Az alkalmazásnak lehetőséget kell biztosítania a felhasználók számára a teendők (todos) létrehozására, listázására, frissítésére és törlésére.</p>
+                <p>Készíts egy egyszerű Todo alkalmazás szerveroldali REST API-t! Az alkalmazásnak lehetőséget kell
+                    biztosítania a felhasználók számára a teendők (todos) létrehozására, listázására, frissítésére és
+                    törlésére.</p>
 
                 <p>Az API-nak a következő funkcionalitást kell biztosítania:</p>
                 <ol>
                     <li>`GET /todos`: Az összes todo listázása JSON formátumban.</li>
-                    <li>`POST /todos`: Új todo létrehozása a kapott adatok alapján. A következő adatokat kell fogadnia: `title` (todo címe), `description` (todo leírása), `due_date` (todo határidője). A létrehozott todo objektumot kell visszaadnia JSON formátumban.</li>
+                    <li>`POST /todos`: Új todo létrehozása a kapott adatok alapján. A következő adatokat kell fogadnia:
+                        `title` (todo címe), `description` (todo leírása), `due_date` (todo határidője). A létrehozott
+                        todo objektumot kell visszaadnia JSON formátumban.</li>
                     <li>`GET /todos/{id}`: Az adott azonosítójú todo részleteinek lekérése JSON formátumban.</li>
-                    <li>`PUT /todos/{id}`: Az adott azonosítójú todo frissítése a kapott adatok alapján. A következő adatok módosíthatók: `title`, `description`, `due_date`. A frissített todo objektumot kell visszaadnia JSON formátumban.</li>
+                    <li>`PUT /todos/{id}`: Az adott azonosítójú todo frissítése a kapott adatok alapján. A következő
+                        adatok módosíthatók: `title`, `description`, `due_date`. A frissített todo objektumot kell
+                        visszaadnia JSON formátumban.</li>
                     <li>`DELETE /todos/{id}`: Az adott azonosítójú todo törlése.</li>
                 </ol>
 
-                <p>Minden endpointnak a megfelelő HTTP státuszkódot kell visszaadnia a kérések feldolgozása során, és a kliensekkel való kommunikáció JSON formátumban történjen.</p>
-                
-                <p>Teszteléshez használhatsz API fejlesztőeszközöket, mint például a Postman vagy az Insomnia, hogy ellenőrizd az endpointok működését, valamint írj egységteszteket a különböző műveletekhez. Fontos, hogy az alkalmazásod a RESTful elveket kövesse és megfeleljen az elvárásoknak.</p>
-                
+                <p>Minden endpointnak a megfelelő HTTP státuszkódot kell visszaadnia a kérések feldolgozása során, és a
+                    kliensekkel való kommunikáció JSON formátumban történjen.</p>
+
+                <p>Teszteléshez használhatsz API fejlesztőeszközöket, mint például a Postman vagy az Insomnia, hogy
+                    ellenőrizd az endpointok működését, valamint írj egységteszteket a különböző műveletekhez. Fontos,
+                    hogy az alkalmazásod a RESTful elveket kövesse és megfeleljen az elvárásoknak.</p>
+
 
                 <p>segítségül adunk hozzá egy adatbázis létrehozására alkalmas sql kódot</p>
                 <div class="code-snippet">
@@ -288,16 +331,18 @@
                     </pre>
                     <button id="copyButton">Copy</button>
                 </div>
-                   
+
             </details>
             <details>
                 <summary>2.feladat</summary>
                 <h3>Todoo alkalmazás REST - kliens</h3>
 
-                <p>Készítsen egy olyan HTML és JavaScript oldalt, amely képes kihasználni az előző feladatban létrehozott Todo alkalmazás REST API összes funkcióját. Az oldalnak lehetőséget kell biztosítania a felhasználók számára a teendők (todos) létrehozására, listázására, frissítésére és törlésére.</p>
-            
+                <p>Készítsen egy olyan HTML és JavaScript oldalt, amely képes kihasználni az előző feladatban
+                    létrehozott Todo alkalmazás REST API összes funkcióját. Az oldalnak lehetőséget kell biztosítania a
+                    felhasználók számára a teendők (todos) létrehozására, listázására, frissítésére és törlésére.</p>
+
                 <p>Az oldalnak tartalmaznia kell a következő elemeket és funkciókat:</p>
-                
+
                 <ol>
                     <li>
                         <p>Todo listázása:</p>
@@ -316,25 +361,30 @@
                     <li>
                         <p>Teendő frissítése:</p>
                         <ul>
-                            <li>Minden teendő mellett kell lennie egy szerkesztés gombnak, amely segítségével módosítható a teendő adatai.</li>
-                            <li>A szerkesztés gomb megnyomására megjelenik egy űrlap, ahol a felhasználó módosíthatja a címet, leírást és határidőt.</li>
+                            <li>Minden teendő mellett kell lennie egy szerkesztés gombnak, amely segítségével
+                                módosítható a teendő adatai.</li>
+                            <li>A szerkesztés gomb megnyomására megjelenik egy űrlap, ahol a felhasználó módosíthatja a
+                                címet, leírást és határidőt.</li>
                             <li>A módosítás elküldése után a teendő adatai frissülniük kell az API-n keresztül.</li>
                         </ul>
                     </li>
                     <li>
                         <p>Teendő törlése:</p>
                         <ul>
-                            <li>Minden teendő mellett kell lennie egy törlés gombnak, amely segítségével törölhető a teendő az adatbázisból az API segítségével.</li>
+                            <li>Minden teendő mellett kell lennie egy törlés gombnak, amely segítségével törölhető a
+                                teendő az adatbázisból az API segítségével.</li>
                         </ul>
                     </li>
                     <li>
-                        <p>Az oldalnak a felhasználói interakciókra reagálnia kell anélkül, hogy az oldalt újra kellene betölteni. A kommunikáció az API-val JavaScript segítségével AJAX hívásokkal történjen.</p>
+                        <p>Az oldalnak a felhasználói interakciókra reagálnia kell anélkül, hogy az oldalt újra kellene
+                            betölteni. A kommunikáció az API-val JavaScript segítségével AJAX hívásokkal történjen.</p>
                     </li>
-                    <li>Az elkészült oldalt kérjük a megadott API-hoz csatlakozva tesztelni, hogy minden funkció megfelelően működik-e.</li>
+                    <li>Az elkészült oldalt kérjük a megadott API-hoz csatlakozva tesztelni, hogy minden funkció
+                        megfelelően működik-e.</li>
                 </ol>
-            
-            
-            
+
+
+
             </details>
 
             <details>
