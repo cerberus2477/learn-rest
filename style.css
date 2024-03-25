@@ -101,7 +101,7 @@ section {
     margin: 2rem 4rem;
 }
 
-.feladat {
+.feladat, .levi {
     background-color: var(--clr-blue-light);
     border: 1px solid var(--clr-blue-dark);
     padding: 2rem;
@@ -117,4 +117,8 @@ fieldset {
     color: white;
     border: none;
     border-radius: 2px;
+}
+
+.levi{
+    background-color: pink;
 }
