@@ -2,7 +2,7 @@ async function fetchRandomCatImg() {
     let catImgElement = document.getElementById('catImg');
     let catJSONElement = document.getElementById('catJSON');
 
-    let userUrl = catImgSource.value;
+    const userUrl = "https://cataas.com" + catImgSource.value.trim(); 
 
     try {
         let response = await fetch(userUrl);

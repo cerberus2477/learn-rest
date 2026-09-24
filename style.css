@@ -26,15 +26,15 @@ nav {
     top: 0;
     width: 100%;
     display: flex;
-    background-color: dimgray;
+    background-color: var(--clr-blue-dark);
     flex-flow: row;
     z-index: 99;
 }
 
 .nav-item {
-    color: wheat;
+    color: white;
     padding: 0.5em;
-    font-size: 1.5em;
+    /*font-size: 1.5em; */
 }
 
 main {
@@ -53,7 +53,7 @@ table {
 
 td,
 th {
-    border: 1px solid black;
+    border: 1px solid var(--clr-blue-dark);
 }
 
 td {
@@ -72,7 +72,7 @@ a {
 
 footer {
     background-color: var(--clr-blue-dark);
-    color: wheat;
+    color: white;
     margin: 0;
     padding: 10px;
 }
@@ -84,44 +84,57 @@ footer {
     margin-left: .5rem;
 }
 
-
-.code-snippet {
-    position: relative;
-    background: #d8e6fc;
-    padding: 10px;
-    font-size: 12px;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-    border: 1px solid #a9c4f8;
-    /* max-width: 500px; */
+p.prompt {
+    margin-block: 2rem;
 }
 
-pre {
-    background: #d8e6fc;
-}
+
 
 .logo {
     margin-right: auto;
 }
 
+
+/* ---------- Code blocks (--------- */
+.code-snippet {
+    position: relative;
+    border: 1px solid var(--clr-blue-light);
+    margin: 1rem 0;
+    font-size: 12px;
+}
+
+pre {
+    margin: 0 !important;
+    padding-top: 2.8rem; 
+}
+
+
+.token {
+    font-family: inherit;
+}
+
+
 .btn {
+    --btn-bg: var(--clr-blue-dark);
     padding: .4rem;
-    background-color: var(--clr-blue-dark);
+    background-color: var(--btn-bg);
     color: white;
     border: none;
     border-radius: 2px;
     cursor: pointer;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
 }
 
+.btn:hover {
+    /* 25% lighter: mixes the color with white; raise 75% for a subtler effect */
+    background-color: color-mix(in srgb, var(--btn-bg) 75%, white);
+}
 
 .copy-btn {
     position: absolute;
     top: 10px;
     right: 10px;
-}
-
-#copyButton:hover {
-    color: #000;
 }
 
 
@@ -146,8 +159,7 @@ section {
     margin: 2rem 4rem;
 }
 
-.feladat,
-.levi {
+.feladat {
     background-color: var(--clr-blue-light);
     border: 1px solid var(--clr-blue-dark);
     padding: 2rem;
@@ -165,6 +177,11 @@ summary {
 h2 {
     text-decoration: 4px var(--clr-blue-mid) underline;
 }
+
+/* h4{
+    background-color: var(--clr-blue-dark);
+    color: white;
+} */
 
 img {
     max-width: 100%;

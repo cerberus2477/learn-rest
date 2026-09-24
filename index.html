@@ -10,14 +10,15 @@
     <script defer src="app.js"></script>
     <link rel="shortcut icon" href="pic/api.png" type="image/x-icon">
 
+
     <!-- kódok színezése -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
-    <script defer>
-        document.addEventListener('DOMContentLoaded', function () {
-            Prism.highlightAll();
-        });
-    </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+
 </head>
 
 <body>
@@ -28,24 +29,27 @@
         <a href="#api" class="nav-item">API</a>
         <a href="#rest" class="nav-item">REST-API</a>
         <a href="#macskak" class="nav-item">Macskák</a>
+        <a href="#hogyanmukodik" class="nav-item">Hogyan működik</a>
         <a href="#proj1" class="nav-item">1. Projekt</a>
         <a href="#proj2" class="nav-item">2. Projekt</a>
     </nav>
+
     <main>
         <h1>API alapok - REST API</h1>
 
-        <section id="celja"><!-- celja -->
+        <section id="celja">
             <h2>Az oldalról</h2>
             <h3>Oldalunk célja</h3>
-            <p>Oldalunk célja, hogy megkönnyítse munkájukat a továkbiakban, valamint elengethetetlen ismereteket
-                szerezzenek az apik világában.</p>
+            <p>Oldalunk célja, hogy megkönnyítse munkájukat a továbbiakban, valamint elengethetetlen ismereteket
+                szerezzenek az API-ok világában.</p>
             <h3>Oldal tartalma</h3>
             <p>Ezen az oldalon 3 részre osztjuk a tanulást. Az elején egy fogalomtárral találkozhatnak ahol az
                 alapfogalmakkal találkozhatnak, majd gyakorlati példák következnek ahol rövid érthető felgit adatokon
                 szemléltetjük a az API-k működését. Az utolsó tartalmi részként megoldandó feladatokat találnak, majd
                 ellenőrzés vagy elakadás esetére ezeknek a megoldását.</p>
         </section>
-        <section id="fogalomtar"><!-- fogalomtar -->
+
+        <section id="fogalomtar">
             <h2>Fogalomtár</h2>
             <dl>
                 <dt>API</dt>
@@ -73,6 +77,7 @@
                 </dd>
             </dl>
         </section>
+
         <section id="api">
             <h2>Általában az API-okról</h2>
             <h3>Mit jelent az API?</h3>
@@ -186,118 +191,125 @@
             </ul>
         </section>
 
-        <div class="feladat" id="macskak">
-            <h2>Feladat Macskák</h2>
-            <p>Ebben a feladatban kipróbálhatsz egy API-t.</p>
-            <p>Ez a táblázat néhány lehetséges lekérést mutat be a <a href="https://cataas.com/">https://cataas.com/</a>
-                oldalról.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Url</th>
-                        <th>Leírás</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>/cat</strong></td>
-                        <td>Will return a random cat</td>
-                    </tr>
-                    <tr>
-                        <td><strong>/cat/tag</strong></td>
-                        <td>Will return a random cat with a <code>tag</code></td>
+        <section>
+            <div class="feladat" id="macskak">
+                <h2>Macskák feladat</h2>
+                <p>Ebben a feladatban kipróbálhatsz egy API-t.</p>
+                <p>Ez a táblázat néhány lehetséges lekérést mutat be a <a
+                        href="https://cataas.com/">https://cataas.com/</a>
+                    oldalról.</p>
 
-                    </tr>
-                    <tr>
-                        <td><strong>/cat/gif</strong></td>
-                        <td>Will return a random gif cat \o/</td>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Url</th>
+                            <th>Leírás</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>/cat</strong></td>
+                            <td>Will return a random cat</td>
+                        </tr>
+                        <tr>
+                            <td><strong>/cat/tag</strong></td>
+                            <td>Will return a random cat with a <code>tag</code></td>
 
-                    </tr>
-                    <tr>
-                        <td><strong>/cat/says/text</strong></td>
-                        <td>Will return a random cat saying <code>text</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>/cat/gif</strong></td>
+                            <td>Will return a random gif cat \o/</td>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>/cat/says/text?fontSize=size&amp;fontColor=color</strong></td>
-                        <td>Will return a random cat saying <code>text</code> with
-                            text's
-                            <code>fontSize</code> and text's <code>fontColor</code>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>/cat?filter=filter</strong></td>
-                        <td>Will return a random cat with image filtered by
-                            <code>filter</code> (blur, mono, negate or custom)
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        </tr>
+                        <tr>
+                            <td><strong>/cat/says/text</strong></td>
+                            <td>Will return a random cat saying <code>text</code></td>
 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>/cat/says/text?fontSize=size&amp;fontColor=color</strong></td>
+                            <td>Will return a random cat saying <code>text</code> with
+                                text's
+                                <code>fontSize</code> and text's <code>fontColor</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>/cat?filter=filter</strong></td>
+                            <td>Will return a random cat with image filtered by
+                                <code>filter</code> (blur, mono, negate or custom)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-            <div>
-                <p class="prompt">A fenti szabályok szerint add meg a kép forrását, majd nyomd meg a gombot.</p>
-                <fieldset>
-                    <label for="catImgSource">Kép forrása</label>
-                    <input type="text" name="" id="catImgSource" value="https://cataas.com/cat">
-                    <input class="btn" type="button" value="Mehet" onclick="fetchRandomCatImg();">
-                    <p><i>Néhány másodpercbe telhet a kép betöltése.</i></p>
-                </fieldset>
+                <div>
+                    <p class="prompt">A fenti szabályok szerint add meg a kép forrását, majd nyomd meg a gombot.</p>
+                    <fieldset>
+                        <label for="catImgSource">Kép forrása: <i>https://cataas.com</i></label>
+                        <input type="text" name="" autocomplete="off" id="catImgSource" value="/cat" placeholder="/cat">
+                        <input class="btn" type="button" value="Mehet" onclick="fetchRandomCatImg();">
+                        <p><i>Néhány másodpercbe telhet a kép betöltése.</i></p>
+                    </fieldset>
 
-                <h4>A kép</h4>
-                <img id="catImg" src="" alt="Random cica a https//cataas.com/-ról">
+                    <h4>A kép</h4>
+                    <img id="catImg" src="" alt="Random cica a https://cataas.com/-ról">
+
+                </div>
 
             </div>
+        </section>
 
-        </div>
+        <section id="hogyanmukodik">
 
-        <h2>Hogyan működik?</h2>
-        <h4>A json kód a kép mögött (így tárolja a szerver a kép adatait)</h4>
-        <div class="feladat">
-            <p id="catJSON"></p>
-        </div>
+            <h2>Hogyan működik?</h2>
+            <h4>A json kód a kép mögött (így tárolja a szerver a kép adatait)</h4>
+            <div class="feladat">
+                <p id="catJSON"></p>
+            </div>
 
-        <p>Ebből az adathalmazból ha szükéges, be tudjuk ágyazni a weboldalba a számunkra érdekes adatokat, akár csak
-            magát a képet.</p>
+            <p>Ebből az adathalmazból ha szükéges, be tudjuk ágyazni a weboldalba a számunkra érdekes adatokat, akár
+                csak
+                magát a képet.</p>
 
-        <h2>Hogyan használjuk az API-kat</h2>
-        <p>Ahhoz, hogy a fenti feladatban a választott kép megjelenjen az oldalon, az alábbi kód fut a
-            háttérben. </p>
+            <h2>Hogyan használjuk az API-kat</h2>
+            <p>Ahhoz, hogy a fenti feladatban a választott kép megjelenjen az oldalon, az alábbi kód fut a
+                háttérben. </p>
 
-        <p>Figyeljük meg a <strong>fetch()</strong> függvény használatát!</p>
-        <div class="code-snippet">
-            <pre class="language-js">
-                async function fetchRandomCatImg() {
-                    let catImgElement = document.getElementById('catImg');
-                    let catJSONElement = document.getElementById('catJSON');
+            <p>Figyeljük meg a <strong>fetch()</strong> függvény használatát!</p>
+            <div class="code-snippet">
+                <pre><code class="language-js">
+async function fetchRandomCatImg() {
+    let catImgElement = document.getElementById('catImg');
+    let catJSONElement = document.getElementById('catJSON');
+
+    let userUrl = catImgSource.value;
+
+    try {
+        let response = await fetch(userUrl);
+        if (response.ok) {
+            catImgElement.src = response.url;
+            let imgUrl = response.url;
+            response = await fetch(imgUrl + "?json=true");
+            if (response.ok) {
+                let jsonData = await response.json();
+                catJSONElement.innerText = JSON.stringify(jsonData);
+            } else {
+                console.error('Hiba:', response.statusText);
+            }
+        } else {
+            console.error('Hiba:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Hiba:', error);
+    }
+}
                 
-                    let userUrl = catImgSource.value;
-                
-                    try {
-                        let response = await fetch(userUrl);
-                        if (response.ok) {
-                            catImgElement.src = response.url;
-                            let imgUrl = response.url;
-                            response = await fetch(imgUrl + "?json=true");
-                            if (response.ok) {
-                                let jsonData = await response.json();
-                                catJSONElement.innerText = JSON.stringify(jsonData);
-                            } else {
-                                console.error('Hiba:', response.statusText);
-                            }
-                        } else {
-                            console.error('Hiba:', response.statusText);
-                        }
-                    } catch (error) {
-                        console.error('Hiba:', error);
-                    }
-                }
-                
-                fetchRandomCatImg(); //meghívjuk a függvényt először
-            </pre>
-            <button class="btn copy-btn" onclick="copyCode(this)">Másolás</button>
-        </div>
+fetchRandomCatImg(); //meghívjuk a függvényt először
+</code></pre>
+                <button class="btn copy-btn" onclick="copyCode(this)">Másolás</button>
+            </div>
+        </section>
 
         <section class="feladat" id="proj1">
             <h3>1. projekt - Todo alkalmazás REST API - szerver</h3>
@@ -307,9 +319,9 @@
                 biztosítania a felhasználók számára a teendők (todos) létrehozására, listázására, frissítésére és
                 törlésére.</p>
 
-            <p>Az API-nak a következő funkcionalitást kell biztosítania:</p>
+            <p><strong>API-nak a következő funkcionalitást kell biztosítania:</strong></p>
             <ol>
-                <li>`GET /todos`: Az összes todo listázása JSON formátumban.</li>
+                <li>`<code>GET /todos`</code>: Az összes todo listázása JSON formátumban.</li>
                 <li>`POST /todos`: Új todo létrehozása a kapott adatok alapján. A következő adatokat kell fogadnia:
                     `title` (todo címe), `description` (todo leírása), `due_date` (todo határidője). A létrehozott
                     todo objektumot kell visszaadnia JSON formátumban.</li>
@@ -330,25 +342,24 @@
 
             <p>Segítségül adunk hozzá egy adatbázis létrehozására alkalmas sql kódot</p>
             <div class="code-snippet">
-                <pre class="language-sql">
-                    CREATE TABLE todos (
-                        id INT AUTO_INCREMENT PRIMARY KEY,
-                        title VARCHAR(255) NOT NULL,
-                        description TEXT,
-                        due_date DATE
-                    );
-                    
-                </pre>
+                <pre><code class="language-sql">
+CREATE TABLE todos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    due_date DATE
+);    
+                </code></pre>
                 <button class="btn copy-btn" onclick="copyCode(this)">Másolás</button>
             </div>
 
             <details>
                 <summary>Egy lehetséges megoldás</summary>
-                <p><i>atodo.php</i></p>
+                <p><i>todo.php</i></p>
                 <div class="code-snippet">
-                    <pre class="language-php">
-                    <?php
+                    <pre><code class="language-php">
 
+&lt;?php
 // Adatbázis kapcsolódás
 $servername = "localhost";
 $username = "felhasznalo";
@@ -439,8 +450,8 @@ if ($conn->query($sql) === TRUE) {
 }
 
 $conn->close();
-?>
-                    </pre>
+
+                    </code></pre>
                     <button class="btn copy-btn" onclick="copyCode(this)">Másolás</button>
                 </div>
             </details>
@@ -500,103 +511,103 @@ $conn->close();
                 <summary>Egy lehetséges megoldás</summary>
                 <p><i>todo.html</i></p>
                 <div class="code-snippet">
-                    <pre class="language-html">
-                        &lt;!DOCTYPE html&gt;
-                        &lt;html lang="hu"&gt;
-                        
-                        &lt;head&gt;
-                            &lt;meta charset="UTF-8"&gt;
-                            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-                            &lt;title&gt;Todo App&lt;/title&gt;
-                            &lt;script src="todo.js"&gt;&lt;/script&gt;
-                        &lt;/head&gt;
-                        
-                        &lt;body&gt;
-                            &lt;h1&gt;Todo App&lt;/h1&gt;
-                        
-                            &lt;form id="todoForm"&gt;
-                                &lt;input type="text" id="title" placeholder="Cím" required&gt;
-                                &lt;textarea id="description" placeholder="Leírás"&gt;&lt;/textarea&gt;
-                                &lt;input type="date" id="dueDate" required&gt;
-                                &lt;button type="submit"&gt;Hozzáadás&lt;/button&gt;
-                            &lt;/form&gt;
-                        
-                            &lt;ul id="todoList"&gt;&lt;/ul&gt;
-                        &lt;/body&gt;
-                        
-                        &lt;/html&gt;
-                    </pre>
-                    <button class="btn" onclick="copyCode(this)">Másolás</button>
+                    <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="hu"&gt ;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Todo App&lt;/title&gt;
+    &lt;script src="todo.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Todo App&lt;/h1&gt;
+
+    &lt;form id="todoForm"&gt;
+        &lt;input type="text" id="title" placeholder="Cím" required&gt;
+        &lt;textarea id="description" placeholder="Leírás"&gt;&lt;/textarea&gt;
+        &lt;input type="date" id="dueDate" required&gt;
+        &lt;button type="submit"&gt;Hozzáadás&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;ul id="todoList"&gt;&lt;/ul&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+                    </code></pre>
+                    <button class="btn copy-btn" onclick="copyCode(this)">Másolás</button>
                 </div>
                 <p><i>todo.js</i></p>
                 <div class="code-snippet">
-                    <pre class="language-js">
-                        const todoForm = document.getElementById('todoForm');
-                        const todoList = document.getElementById('todoList');
-                        
-                        // Az összes teendő betöltése
-                        function loadTodos() {
-                            fetch('/todos')
-                                .then(response => response.json())
-                                .then(todos => {
-                                    todoList.innerHTML = '';
-                                    todos.forEach(todo => {
-                                        const li = document.createElement('li');
-                                        li.innerHTML = `&lt;/b&gt;${todo.title}&lt;/b&gt;&lt;br&gt;${todo.description}&lt;br>Határidő: ${todo.due_date}
-                                        &lt;button onclick="editTodo(${todo.id})">Szerkesztés&lt;/button&gt;
-                                        &lt;button onclick="deleteTodo(${todo.id})">Törlés&lt;/button&gt;`;
-                                        todoList.appendChild(li);
-                                    });
-                                })
-                                .catch(error => console.error('Hiba a teendők betöltésekor:', error));
-                        }
-                        
-                        // Új teendő létrehozása
-                        todoForm.addEventListener('submit', event => {
-                            event.preventDefault();
-                            const formData = new FormData(todoForm);
-                            fetch('/todos', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({
-                                    title: formData.get('title'),
-                                    description: formData.get('description'),
-                                    due_date: formData.get('dueDate')
-                                })
-                            })
-                                .then(response => response.json())
-                                .then(() => {
-                                    loadTodos();
-                                    todoForm.reset();
-                                })
-                                .catch(error => console.error('Hiba az új teendő létrehozásakor:', error));
-                        });
-                        
-                        // Teendő szerkesztése
-                        function editTodo(id) {
-                            // Implementáció hiányzik
-                            console.log('Teendő szerkesztése id:', id);
-                        }
-                        
-                        // Teendő törlése
-                        function deleteTodo(id) {
-                            fetch(`/todos/${id}`, {
-                                method: 'DELETE'
-                            })
-                                .then(() => {
-                                    loadTodos();
-                                })
-                                .catch(error => console.error('Hiba a teendő törlésekor:', error));
-                        }
-                        
-                        // Teendők betöltése az oldal betöltésekor
-                        window.addEventListener('load', () => {
-                            loadTodos();
-                        });
-                    </pre>
-                    <button class="btn" onclick="copyCode(this)">Másolás</button>
+                    <pre><code class="language-js">
+const todoForm = document.getElementById('todoForm');
+const todoList = document.getElementById('todoList');
+
+// Az összes teendő betöltése
+function loadTodos() {
+    fetch('/todos')
+        .then(response => response.json())
+        .then(todos => {
+            todoList.innerHTML = '';
+            todos.forEach(todo => {
+                const li = document.createElement('li');
+                li.innerHTML = `&lt;/b&gt;${todo.title}&lt;/b&gt;&lt;br&gt;${todo.description}&lt;br>Határidő: ${todo.due_date}
+                &lt;button onclick="editTodo(${todo.id})">Szerkesztés&lt;/button&gt;
+                &lt;button onclick="deleteTodo(${todo.id})">Törlés&lt;/button&gt;`;
+                todoList.appendChild(li);
+            });
+        })
+        .catch(error => console.error('Hiba a teendők betöltésekor:', error));
+}
+
+// Új teendő létrehozása
+todoForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const formData = new FormData(todoForm);
+    fetch('/todos', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title: formData.get('title'),
+            description: formData.get('description'),
+            due_date: formData.get('dueDate')
+        })
+    })
+        .then(response => response.json())
+        .then(() => {
+            loadTodos();
+            todoForm.reset();
+        })
+        .catch(error => console.error('Hiba az új teendő létrehozásakor:', error));
+});
+
+// Teendő szerkesztése
+function editTodo(id) {
+    // Implementáció hiányzik
+    console.log('Teendő szerkesztése id:', id);
+}
+
+// Teendő törlése
+function deleteTodo(id) {
+    fetch(`/todos/${id}`, {
+        method: 'DELETE'
+    })
+        .then(() => {
+            loadTodos();
+        })
+        .catch(error => console.error('Hiba a teendő törlésekor:', error));
+}
+
+// Teendők betöltése az oldal betöltésekor
+window.addEventListener('load', () => {
+    loadTodos();
+});
+                    </code></pre>
+                    <button class="btn copy-btn" onclick="copyCode(this)">Másolás</button>
                 </div>
             </details>
 
@@ -609,10 +620,10 @@ $conn->close();
     <footer>
         <p>Hasznos linkek</p>
         <ul>
-            <li><a href="https//cataas.com/">https//cataas.com/</a></li>
-            <li><a href="https//github.com/public-apis/public-apis?tab=readme-ov-file">https//github.com/public-apis</a>
+            <li><a href="https://cataas.com/">https://cataas.com/</a></li>
+            <li><a href="https://github.com/public-apis/public-apis?tab=readme-ov-file">https://github.com/public-apis</a>
             </li>
-            <li><a href="https//http.cat/">https//http.cat/</a></li>
+            <li><a href="https://http.cat/">https://http.cat/</a></li>
         </ul>
         <p>Forráslinkek</p>
         <ul>
